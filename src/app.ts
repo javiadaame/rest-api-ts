@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 3001;
 
 const app = express()
 
+// TEST
+
 /* Load Database */
 db().then(() => console.log('[DATABASE] Connection successful.'))
 
