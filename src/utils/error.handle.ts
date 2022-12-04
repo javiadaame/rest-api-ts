@@ -5,7 +5,8 @@ import { Response } from "express";
  * @param res Response
  * @param error string - The error
  */
-const handleHttp = (res: Response, error: string) => {
+const handleHttp = (res: Response, error: string, errorRaw?: any) => {
+    console.log(errorRaw)
     res.status(500).send({ error })
 }
 
