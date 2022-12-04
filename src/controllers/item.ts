@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { getCar, getCars, insertCar, updateCar } from "../services/item.service"
+import { deleteCar, getCar, getCars, insertCar, updateCar } from "../services/item.service"
 import { handleHttp } from "../utils/error.handle"
 
 /**
@@ -65,9 +65,11 @@ const postItem = async ({ body }: Request, res: Response) => {
  * @param req Request
  * @param res Response
  */
-const deleteItem = (req: Request, res: Response) => {
+const deleteItem = async ({ params }: Request, res: Response) => {
     try {
-
+        const { id } = params
+        const response = await deleteCar(id)
+        res.send(response)
     } catch (e) {
         handleHttp(res, 'ERROR_DELETE_ITEM')
     }
