@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { getCar, getCars, insertCar } from "../services/item.service"
+import { getCar, getCars, insertCar, updateCar } from "../services/item.service"
 import { handleHttp } from "../utils/error.handle"
 
 /**
@@ -36,9 +36,11 @@ const getItems = async (req: Request, res: Response) => {
  * @param req Request
  * @param res Response
  */
-const updateItem = (req: Request, res: Response) => {
+const updateItem = async ({ params, body }: Request, res: Response) => {
     try {
-
+        const { id } = params
+        const response = await updateCar(id, body)
+        res.send(response)
     } catch (e) {
         handleHttp(res, 'ERROR_UPDATE_ITEM')
     }

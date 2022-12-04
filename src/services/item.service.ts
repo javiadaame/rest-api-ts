@@ -19,8 +19,11 @@ const getCars = async () => {
     return await ItemModel.find({})
 }
 
-const updateCar = () => {
-
+const updateCar = async (id: string, data: Car) => {
+    return await ItemModel.findOneAndUpdate(
+        { _id: id },
+        data,
+        { new: true })
 }
 
 /**
@@ -32,8 +35,8 @@ const insertCar = async (item: Car) => {
     return await ItemModel.create(item)
 }
 
-const deleteCar = () => {
+const deleteCar = async (id: string) => {
 
 }
 
-export { insertCar, getCars, getCar }
+export { insertCar, getCars, getCar, updateCar }
