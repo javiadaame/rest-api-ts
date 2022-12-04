@@ -2,6 +2,11 @@ import { Request, Response } from "express"
 import { getCar, getCars, insertCar } from "../services/item.service"
 import { handleHttp } from "../utils/error.handle"
 
+/**
+ * Get specific item
+ * @param params Request
+ * @param res Response
+ */
 const getItem = async ({ params }: Request, res: Response) => {
     try {
         const { id } = params
@@ -12,6 +17,11 @@ const getItem = async ({ params }: Request, res: Response) => {
     }
 }
 
+/**
+ * Get all items
+ * @param req Request
+ * @param res Response
+ */
 const getItems = async (req: Request, res: Response) => {
     try {
         const response = await getCars()
@@ -21,6 +31,11 @@ const getItems = async (req: Request, res: Response) => {
     }
 }
 
+/**
+ * Update specific item
+ * @param req Request
+ * @param res Response
+ */
 const updateItem = (req: Request, res: Response) => {
     try {
 
@@ -29,6 +44,11 @@ const updateItem = (req: Request, res: Response) => {
     }
 }
 
+/**
+ * Crate new item
+ * @param body Request 
+ * @param res Response
+ */
 const postItem = async ({ body }: Request, res: Response) => {
     try {
         const responseItem = await insertCar(body)
@@ -38,6 +58,11 @@ const postItem = async ({ body }: Request, res: Response) => {
     }
 }
 
+/**
+ * Delete specific item
+ * @param req Request
+ * @param res Response
+ */
 const deleteItem = (req: Request, res: Response) => {
     try {
 
