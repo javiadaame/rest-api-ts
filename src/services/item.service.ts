@@ -7,7 +7,7 @@ import ItemModel from "../models/item.model"
  * @param id number - Id of the car (_id)
  * @returns table - Specific car
  */
-const getCar = async (id: string) => {
+export const getCar = async (id: string) => {
     return await ItemModel.findOne({ _id: id })
 }
 
@@ -15,7 +15,7 @@ const getCar = async (id: string) => {
  * Get all database cars
  * @returns table - Cars
  */
-const getCars = async () => {
+export const getCars = async () => {
     return await ItemModel.find({})
 }
 
@@ -25,7 +25,7 @@ const getCars = async () => {
  * @param data interface - Item data
  * @returns table - Specific car
  */
-const updateCar = async (id: string, data: Car) => {
+export const updateCar = async (id: string, data: Car) => {
     return await ItemModel.findOneAndUpdate(
         { _id: id },
         data,
@@ -37,7 +37,7 @@ const updateCar = async (id: string, data: Car) => {
  * @param item interface - Item data
  * @returns table - Car
  */
-const insertCar = async (item: Car) => {
+export const insertCar = async (item: Car) => {
     return await ItemModel.create(item)
 }
 
@@ -45,8 +45,6 @@ const insertCar = async (item: Car) => {
  * Remove specific database car 
  * @param id number - Id of the car (_id)
  */
-const deleteCar = async (id: string) => {
+export const deleteCar = async (id: string) => {
     return await ItemModel.remove({ _id: id })
 }
-
-export { insertCar, getCars, getCar, updateCar, deleteCar }

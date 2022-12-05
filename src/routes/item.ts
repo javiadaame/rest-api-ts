@@ -1,14 +1,11 @@
 import { Request, Response, Router } from "express";
-import { deleteItem, getItem, getItems, postItem, updateItem } from "../controllers/item";
+import { deleteItem, getItem, getItems, postItem, updateItem } from "../controllers/item.controller";
+import { logMiddleware } from "../middlewares/log.middleware";
 
-const router = Router()
-
-/**
- * http://localhost:3002/items [GET]
- */
+export const router = Router()
 
 router.get('/', getItems)
-router.get('/:id', getItem)
+router.get('/:id', logMiddleware, getItem)
 
 router.post('/', postItem)
 
@@ -16,6 +13,3 @@ router.put('/:id', updateItem)
 
 router.delete('/:id', deleteItem)
 
-
-
-export { router };
